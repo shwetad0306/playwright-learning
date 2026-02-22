@@ -1,0 +1,29 @@
+import { test, expect } from '@playwright/test';
+
+test('has title', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  await page.waitForTimeout(3000);
+
+  console.log("Page loaded successfully");
+
+  await expect(page).toHaveTitle(/Playwright/);
+
+  await page.waitForTimeout(3000);
+
+  console.log("Title validation completed");
+});
+
+
+test('get started link', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+  await page.waitForTimeout(3000);
+
+  // Click the get started link.
+  await page.getByRole('link', { name: 'Get started' }).click();
+  await page.waitForTimeout(3000);
+
+  // Expects page to have a heading with the name of Installation.
+  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+  await page.waitForTimeout(3000);
+});
