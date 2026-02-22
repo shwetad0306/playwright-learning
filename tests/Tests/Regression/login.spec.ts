@@ -10,7 +10,7 @@ test('Login once and save session', async ({ page }) => {
   await page.locator('#password').fill(process.env.SAUCE_PASS!);
   await page.waitForTimeout(1000);
   await page.locator('#login-button').click();
-  await page.waitForTimeout(20000);
+  await page.waitForTimeout(2000);
 
   // Verify login
   await expect(page).toHaveURL(/inventory/);
